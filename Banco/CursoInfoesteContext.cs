@@ -1,10 +1,11 @@
 using CursoInfoeste.Models;
+using CursoInfoeste.Services;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
 namespace CursoInfoeste.Banco
 {
-    public class CursoInfoesteContext(DbContextOptions<CursoInfoesteContext> options) : DbContext(options)
+    public class CursoInfoesteContext(DbContextOptions<CursoInfoesteContext> options, Persistencia persistencia) : DbContext(options)
     {
         public DbSet<Tenant> Tenants { get; set; }
         public DbSet<CashRegister> CashRegisters { get; set; }
@@ -22,6 +23,8 @@ namespace CursoInfoeste.Banco
             modelBuilder.Entity<CashRegister>(entity =>
             {
                 entity.HasIndex(entity => new{ entity.TenantId, entity.Number });
+
+                entity.HasQueryFilter(x => x.TenantId == persistencia.TenantId);
             });
 
             modelBuilder.Entity<Order>(entity =>

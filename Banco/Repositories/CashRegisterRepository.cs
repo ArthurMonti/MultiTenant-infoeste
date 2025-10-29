@@ -11,9 +11,9 @@ namespace CursoInfoeste.Banco.Repositories
         {
         }
 
-        public async Task<CashRegister> GetByNumberAsync(int tenantId, int number, CancellationToken cancellationToken)
+        public async Task<CashRegister> GetByNumberAsync( int number, CancellationToken cancellationToken)
         {
-            return await _repository.FirstOrDefaultAsync(x => x.Number == number && x.TenantId == tenantId);
+            return await _repository.FirstOrDefaultAsync(x => x.Number == number);
         }
     }
 }

@@ -1,3 +1,4 @@
+using CursoInfoeste;
 using CursoInfoeste.Abstractions.Repositories;
 using CursoInfoeste.Abstractions.Services;
 using CursoInfoeste.Banco;
@@ -14,6 +15,7 @@ builder.Services.AddScoped<ITenantRepository, TenantRepository>();
 builder.Services.AddScoped<ITenantService, TenantService>();
 builder.Services.AddScoped<ICashRegisterRepository, CashRegisterRepository>();
 builder.Services.AddScoped<ICashRegisterService, CashRegisterService>();
+builder.Services.AddScoped<Persistencia>();
 
 builder.Services.AddDbContext<CursoInfoesteContext>(options =>
     options.UseMySql(
@@ -33,6 +35,8 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 var app = builder.Build();
+
+app.UseSimpleMiddleware();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
