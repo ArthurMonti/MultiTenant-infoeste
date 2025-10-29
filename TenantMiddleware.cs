@@ -20,7 +20,7 @@ namespace CursoInfoeste
             }
             
             Console.WriteLine("➡️  Antes do próximo middleware");
-
+            //context.User
             await _next(context);
 
             Console.WriteLine("⬅️  Depois do próximo middleware");
