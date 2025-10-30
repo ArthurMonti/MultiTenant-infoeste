@@ -2,11 +2,9 @@
 
 namespace CursoInfoeste.Models
 {
-    public class CashRegister : BaseEntity
+    public class CashRegister : BaseTenantEntity
     {
         public int Number { get; set; }
-        public int TenantId { get; set; }
         public bool IsOpen { get; set; }
-        public Tenant Tenant { get; set; }
     }
 }

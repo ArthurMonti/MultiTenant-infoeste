@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CursoInfoeste.Banco.Repositories
 {
-    public class CashRegisterRepository : BaseRepository<CashRegister>, ICashRegisterRepository
+    public class CashRegisterRepository : BaseTenantRepository<CashRegister>, ICashRegisterRepository
     {
         public CashRegisterRepository(CursoInfoesteContext context, Persistencia persistencia) : base(context, persistencia)
         {

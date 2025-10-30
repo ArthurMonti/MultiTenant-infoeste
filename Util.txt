@@ -1,5 +1,7 @@
 ﻿docker run --name mysqlInfoesteDB -p 3306:3306 -e MYSQL_ROOT_PASSWORD=infoeste123 -e MYSQL_DATABASE=infoesteDB -d mysql:8.0
 
+dotnet tool install --global dotnet-ef
+
 dotnet ef migrations add InitialCreate
 
 

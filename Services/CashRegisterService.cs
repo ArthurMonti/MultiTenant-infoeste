@@ -20,7 +20,6 @@ namespace CursoInfoeste.Services
             var cashRegister = new CashRegister
             {
                 Number = request.Number,
-                TenantId = tenantId,
                 IsOpen = false
             };
             var newCashRegister = await _repository.Insert(cashRegister, cancellationToken);
