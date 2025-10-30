@@ -16,6 +16,7 @@ builder.Services.AddScoped<ITenantService, TenantService>();
 builder.Services.AddScoped<ICashRegisterRepository, CashRegisterRepository>();
 builder.Services.AddScoped<ICashRegisterService, CashRegisterService>();
 builder.Services.AddScoped<Persistencia>();
+builder.Services.AddScoped<TokenService>();
 //builder.Services.AddKeyedScoped<ICashRegisterService, CashRegisterService>(1);
 //builder.Services.AddKeyedScoped<ICashRegisterService, CashRegisterService>(2);
 
