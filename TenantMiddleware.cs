@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using CursoInfoeste.Models;
+using System.Diagnostics;
 
 namespace CursoInfoeste
 {
@@ -13,7 +14,17 @@ namespace CursoInfoeste
 
         public async Task InvokeAsync(HttpContext context, Persistencia persistencia)
         {
-            var tenantId = context.Request.Headers["TenantId"].ToString();
+            string tenantId = string.Empty;
+            if (context.User != null && context.User.Identity.IsAuthenticated)
+            {
+                var claim = context.User.Claims?.FirstOrDefault(x => x.Type == "TenantId");
+                tenantId = claim.Value.ToString();
+
+            }else
+            {
+                tenantId = context.Request.Headers["TenantId"].ToString();
+                
+            }
             persistencia.TenantId = string.IsNullOrEmpty(tenantId) ? 0 : int.Parse(tenantId);
             //Antes do endpoint
             await _next(context);
