@@ -12,7 +12,6 @@ namespace CursoInfoeste.Controllers
     public class CashRegisterController : BaseController
     {
         private ICashRegisterService _service;
-        private readonly IServiceProvider serviceProvider;
 
         public CashRegisterController(ICashRegisterService service)
         {
@@ -60,6 +59,12 @@ namespace CursoInfoeste.Controllers
                 return NoContent();
             }
             return Ok();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            return Ok(await _service.GetAll());
         }
     }
 }

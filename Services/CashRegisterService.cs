@@ -74,5 +74,10 @@ namespace CursoInfoeste.Services
             await _repository.Update(cashRegister, cancellationToken);
             return true;
         }
+
+        public async Task<List<CashRegister>> GetAll()
+        {
+            return await _repository.GetAll();
+        }
     }
 }

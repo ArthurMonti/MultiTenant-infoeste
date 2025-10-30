@@ -14,7 +14,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<ITenantRepository, TenantRepository>();
 builder.Services.AddScoped<ITenantService, TenantService>();
 builder.Services.AddScoped<ICashRegisterRepository, CashRegisterRepository>();
-builder.Services.AddScoped<CashRegisterService>();
+builder.Services.AddScoped<ICashRegisterService, CashRegisterService>();
 builder.Services.AddScoped<Persistencia>();
 //builder.Services.AddKeyedScoped<ICashRegisterService, CashRegisterService>(1);
 //builder.Services.AddKeyedScoped<ICashRegisterService, CashRegisterService>(2);

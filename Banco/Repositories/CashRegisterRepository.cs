@@ -13,7 +13,12 @@ namespace CursoInfoeste.Banco.Repositories
 
         public async Task<CashRegister> GetByNumberAsync(int number, CancellationToken cancellationToken)
         {
-            return await _repository.FirstOrDefaultAsync(x => x.Number == number && x.TenantId == _persistencia.TenantId);
+
+            var query = _repository.IgnoreQueryFilters().Where(x => x.Number == number);
+
+            var stringQuery = query.ToQueryString();
+
+            return await query.FirstOrDefaultAsync();
         }
     }
 }
