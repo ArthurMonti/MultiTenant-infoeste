@@ -33,9 +33,9 @@ namespace CursoInfoeste.Services
             };
         }
 
-        public async Task<CashRegisterResponse> GetByNumber(int tenantId, int number, CancellationToken cancellationToken)
+        public async Task<CashRegisterResponse> GetByNumber(int number, CancellationToken cancellationToken)
         {
-            var cashRegister = await _repository.GetByNumberAsync(tenantId ,number, cancellationToken);
+            var cashRegister = await _repository.GetByNumberAsync(number, cancellationToken);
             if (cashRegister == null)
             {
                 return null;
@@ -51,7 +51,7 @@ namespace CursoInfoeste.Services
 
         public async Task<bool> Open(int tenantId, int number, CancellationToken cancellationToken)
         {
-            var cashRegister = await _repository.GetByNumberAsync(tenantId,number, cancellationToken);
+            var cashRegister = await _repository.GetByNumberAsync(number, cancellationToken);
             if (cashRegister == null || cashRegister.IsOpen)
             {
                 return false;
@@ -64,7 +64,7 @@ namespace CursoInfoeste.Services
 
         public async Task<bool> Close(int tenantId, int number, CancellationToken cancellationToken)
         {
-            var cashRegister = await _repository.GetByNumberAsync(tenantId, number, cancellationToken);
+            var cashRegister = await _repository.GetByNumberAsync(number, cancellationToken);
             if (cashRegister == null || !cashRegister.IsOpen)
             {
                 return false;

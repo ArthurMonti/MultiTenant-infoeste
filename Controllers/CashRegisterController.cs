@@ -1,7 +1,9 @@
 using CursoInfoeste.Abstractions.Services;
 using CursoInfoeste.Controllers.Base;
 using CursoInfoeste.Models.Requests;
+using CursoInfoeste.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace CursoInfoeste.Controllers
 {
@@ -9,17 +11,21 @@ namespace CursoInfoeste.Controllers
     [Route("[controller]")]
     public class CashRegisterController : BaseController
     {
-        private readonly ICashRegisterService _service;
+        private ICashRegisterService _service;
+        private readonly IServiceProvider serviceProvider;
 
         public CashRegisterController(ICashRegisterService service)
         {
+            
             _service = service;
         }
 
         [HttpGet("{number}")]
         public async Task<IActionResult> GetByNumber(int number, CancellationToken cancellationToken)
         {
-            var cashRegister = await _service.GetByNumber(TenantId, number, cancellationToken);
+            //var service = serviceProvider.GetRequiredKeyedService<ICashRegisterService>(TenantId);
+
+            var cashRegister = await _service.GetByNumber(number, cancellationToken);
             if (cashRegister == null)
             {
                 return NotFound();

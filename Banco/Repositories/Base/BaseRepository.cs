@@ -5,10 +5,11 @@ using System.Linq.Expressions;
 
 namespace CursoInfoeste.Banco.Repositories.Base
 {
-    public abstract class BaseRepository<T>(CursoInfoesteContext context) : IRepository<T> where T : BaseEntity
+    public abstract class BaseRepository<T>(CursoInfoesteContext context, Persistencia persistencia) : IRepository<T> where T : BaseEntity
     {
         protected readonly CursoInfoesteContext _context = context;
-        protected readonly DbSet<T> _repository = context.Set<T>();            
+        protected readonly DbSet<T> _repository = context.Set<T>();
+        protected readonly Persistencia _persistencia = persistencia;
 
         public virtual async Task<List<T>> GetAll(int pageNumber = 1, int pageSize = 10)
         {

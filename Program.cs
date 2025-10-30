@@ -1,3 +1,4 @@
+using CursoInfoeste;
 using CursoInfoeste.Abstractions.Repositories;
 using CursoInfoeste.Abstractions.Services;
 using CursoInfoeste.Banco;
@@ -13,7 +14,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<ITenantRepository, TenantRepository>();
 builder.Services.AddScoped<ITenantService, TenantService>();
 builder.Services.AddScoped<ICashRegisterRepository, CashRegisterRepository>();
-builder.Services.AddScoped<ICashRegisterService, CashRegisterService>();
+builder.Services.AddScoped<CashRegisterService>();
+builder.Services.AddScoped<Persistencia>();
+//builder.Services.AddKeyedScoped<ICashRegisterService, CashRegisterService>(1);
+//builder.Services.AddKeyedScoped<ICashRegisterService, CashRegisterService>(2);
 
 builder.Services.AddDbContext<CursoInfoesteContext>(options =>
     options.UseMySql(
@@ -40,6 +44,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseMiddleware<TenantMiddleware>();
 
 app.UseHttpsRedirection();
 

@@ -4,6 +4,6 @@ namespace CursoInfoeste.Abstractions.Repositories
 {
     public interface ICashRegisterRepository : IRepository<CashRegister>
     {
-        Task<CashRegister> GetByNumberAsync(int tenantId,int number, CancellationToken cancellationToken);
+        Task<CashRegister> GetByNumberAsync(int number, CancellationToken cancellationToken);
     }
 }
