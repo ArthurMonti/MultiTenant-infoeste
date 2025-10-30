@@ -20,5 +20,12 @@ namespace CursoInfoeste.Banco.Repositories
 
             return await query.FirstOrDefaultAsync();
         }
+
+        public override Task<CashRegister> Insert(CashRegister entity, CancellationToken cancellationToken)
+        {
+            //Validação a mais
+
+            return base.Insert(entity, cancellationToken);
+        }
     }
 }

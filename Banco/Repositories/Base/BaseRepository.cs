@@ -1,4 +1,5 @@
 ﻿using CursoInfoeste.Abstractions.Repositories;
+using CursoInfoeste.Models;
 using CursoInfoeste.Models.Base;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;

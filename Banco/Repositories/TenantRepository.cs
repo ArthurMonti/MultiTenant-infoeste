@@ -9,5 +9,8 @@ namespace CursoInfoeste.Banco.Repositories
         public TenantRepository(CursoInfoesteContext context, Persistencia persistencia) : base(context, persistencia)
         {
         }
+
+
+
     }
 }

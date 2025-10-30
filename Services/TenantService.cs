@@ -1,5 +1,6 @@
 using CursoInfoeste.Abstractions.Repositories;
 using CursoInfoeste.Abstractions.Services;
+using CursoInfoeste.Banco.Repositories.Base;
 using CursoInfoeste.Models;
 using CursoInfoeste.Models.Requests;
 using CursoInfoeste.Models.Responses;
@@ -9,7 +10,6 @@ namespace CursoInfoeste.Services
     public class TenantService : ITenantService
     {
         private readonly ITenantRepository _repository;
-
         public TenantService(ITenantRepository repository)
         {
             _repository = repository;
